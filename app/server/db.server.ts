@@ -38,11 +38,19 @@ function saveDb(db: DB): void {
 // ── Donations ────────────────────────────────────────────────────────────────
 
 export function getAllDonations(): Donation[] {
-  return ensureDb().donations;
+  return ensureDb().donations.map(donation => ({
+    ...donation,
+    coordinates: donation.coordinates ?? { lat: 13.0827, lng: 80.2707 },
+  }));
 }
 
 export function getDonationById(id: string): Donation | undefined {
-  return ensureDb().donations.find(d => d.id === id);
+  const donation = ensureDb().donations.find(d => d.id === id);
+  if (!donation) return undefined;
+  return {
+    ...donation,
+    coordinates: donation.coordinates ?? { lat: 13.0827, lng: 80.2707 },
+  };
 }
 
 export function searchDonationsByName(query: string): Donation[] {

@@ -70,12 +70,33 @@ export function DonationMap({
     );
   }
 
+  const donationsWithCoords = donations.filter(
+    (donation): donation is Donation =>
+      donation.coordinates != null &&
+      typeof donation.coordinates.lat === 'number' &&
+      typeof donation.coordinates.lng === 'number'
+  );
+
+  const recipientsWithCoords = recipients.filter(
+    (recipient): recipient is Recipient =>
+      recipient.coordinates != null &&
+      typeof recipient.coordinates.lat === 'number' &&
+      typeof recipient.coordinates.lng === 'number'
+  );
+
+  const oldAgeHomesWithCoords = oldAgeHomes.filter(
+    (home): home is OldAgeHome =>
+      home.coordinates != null &&
+      typeof home.coordinates.lat === 'number' &&
+      typeof home.coordinates.lng === 'number'
+  );
+
   const bounds = useMemo(() => {
     const allCoords = [
-      ...donations.map(d => d?.coordinates),
-      ...recipients.map(r => r?.coordinates),
-      ...oldAgeHomes.map(h => h?.coordinates),
-    ].filter((coord): coord is Coordinates => Boolean(coord?.lat) && Boolean(coord?.lng));
+      ...donationsWithCoords.map(d => d.coordinates),
+      ...recipientsWithCoords.map(r => r.coordinates),
+      ...oldAgeHomesWithCoords.map(h => h.coordinates),
+    ];
 
     if (allCoords.length === 0) return null;
 
@@ -87,7 +108,7 @@ export function DonationMap({
     const maxLng = Math.max(...lngs);
 
     return [[minLat, minLng], [maxLat, maxLng]] as [[number, number], [number, number]];
-  }, [donations, recipients, oldAgeHomes]);
+  }, [donationsWithCoords, recipientsWithCoords, oldAgeHomesWithCoords]);
 
   const getStatusColor = (status: string): string => {
     if (status === 'pending') return '#f59e0b';
@@ -116,14 +137,6 @@ export function DonationMap({
 
   const mapBounds = bounds ? (bounds as any) : undefined;
 
-  if (!components || !isBrowser) {
-    return (
-      <div className={styles.mapPlaceholder} style={{ height }}>
-        <div>Loading map…</div>
-      </div>
-    );
-  }
-
   const { MapContainer, TileLayer, Marker, Popup, CircleMarker } = components;
   const L = require('leaflet');
 
@@ -140,7 +153,7 @@ export function DonationMap({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {donations.map(donation => (
+        {donationsWithCoords.map(donation => (
           <CircleMarker
             key={`donation-${donation.id}`}
             center={[donation.coordinates.lat, donation.coordinates.lng] as [number, number]}
@@ -165,7 +178,7 @@ export function DonationMap({
           </CircleMarker>
         ))}
 
-        {recipients.map(recipient => (
+        {recipientsWithCoords.map(recipient => (
           <Marker
             key={`recipient-${recipient.id}`}
             position={[recipient.coordinates.lat, recipient.coordinates.lng] as [number, number]}
@@ -183,7 +196,7 @@ export function DonationMap({
           </Marker>
         ))}
 
-        {oldAgeHomes.map(home => (
+        {oldAgeHomesWithCoords.map(home => (
           <Marker
             key={`home-${home.id}`}
             position={[home.coordinates.lat, home.coordinates.lng] as [number, number]}
