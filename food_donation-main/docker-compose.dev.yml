@@ -1,0 +1,28 @@
+version: '3.8'
+
+# Development setup with hot-reload
+# Usage: docker-compose -f docker-compose.dev.yml up
+
+services:
+  foodex-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: foodex-dev
+    ports:
+      - "5173:5173"  # Vite dev server
+      - "3000:3000"  # Production server fallback
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+    command: npm run dev
+    networks:
+      - foodex-network
+    stdin_open: true
+    tty: true
+
+networks:
+  foodex-network:
+    driver: bridge
