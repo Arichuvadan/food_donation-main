@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+:root {
+  /* Colors */
+  --color-primary: #2d7a3a;
+  --color-primary-dark: #1f5828;
+  --color-primary-light: #4caf62;
+  --color-primary-subtle: #e8f5eb;
+  --color-secondary: #f97316;
+  --color-secondary-dark: #c05a0e;
+  --color-secondary-subtle: #fff4ed;
+  --color-accent: #fbbf24;
+  --color-bg: #f9faf8;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f2f7f3;
+  --color-border: #d6e8d9;
+  --color-text: #1a2b1d;
+  --color-text-muted: #5a7360;
+  --color-text-light: #8aab8e;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
+
+  /* Status colors */
+  --color-status-pending: #f59e0b;
+  --color-status-transit: #3b82f6;
+  --color-status-delivered: #16a34a;
+
+  /* Font Families */
+  --family-display: 'Playfair Display', Georgia, serif;
+  --family-body: 'Nunito', system-ui, sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-primary: 0 4px 20px rgba(45,122,58,0.25);
+}

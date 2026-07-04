@@ -1,0 +1,316 @@
+{
+  "donations": [
+    {
+      "id": "D001",
+      "donorName": "Priya Sharma",
+      "contactPhone": "+91 98765 43210",
+      "address": "14, Rose Garden Colony, Koramangala, Bengaluru",
+      "foodType": "veg",
+      "quantity": "25 kg (approx. 80 servings)",
+      "preparedAt": "2024-07-04T08:00:00",
+      "description": "Freshly cooked biryani and dal from a wedding ceremony. Packed hygienically in food-grade containers.",
+      "status": "pending",
+      "distance": "2.4 km",
+      "submittedAt": "2024-07-04T09:30:00"
+    },
+    {
+      "id": "D002",
+      "donorName": "Ramesh Mehta",
+      "contactPhone": "+91 87654 32109",
+      "address": "88, MG Road, Indiranagar, Bengaluru",
+      "foodType": "both",
+      "quantity": "15 kg (approx. 50 servings)",
+      "preparedAt": "2024-07-04T07:30:00",
+      "description": "Office canteen surplus — roti, sabzi, and chicken curry. All packed and ready for pickup.",
+      "status": "in_transit",
+      "distance": "3.8 km",
+      "claimedBy": "Meenakshi college",
+      "volunteer": "Arjun Nair",
+      "submittedAt": "2024-07-04T08:00:00",
+      "pickedUpAt": "2024-07-04T10:15:00"
+    },
+    {
+      "id": "D003",
+      "donorName": "Lakshmi Krishnan",
+      "contactPhone": "+91 76543 21098",
+      "address": "5, Gandhi Nagar, Jayanagar, Bengaluru",
+      "foodType": "veg",
+      "quantity": "10 kg (approx. 35 servings)",
+      "preparedAt": "2024-07-03T18:00:00",
+      "description": "Home celebration food – sambar rice, rasam and papad. Still fresh.",
+      "status": "delivered",
+      "distance": "1.1 km",
+      "claimedBy": "Seva Orphanage",
+      "volunteer": "Meera Pillai",
+      "submittedAt": "2024-07-03T19:00:00",
+      "pickedUpAt": "2024-07-03T20:00:00",
+      "deliveredAt": "2024-07-03T21:00:00"
+    },
+    {
+      "id": "D004",
+      "donorName": "Tech Mahindra Cafeteria",
+      "contactPhone": "+91 80 1234 5678",
+      "address": "Tech Mahindra Office, ITPL Main Road, Whitefield, Bengaluru",
+      "foodType": "both",
+      "quantity": "40 kg (approx. 140 servings)",
+      "preparedAt": "2024-07-04T12:00:00",
+      "description": "Large corporate lunch surplus. Mixed veg and non-veg dishes, well packaged.",
+      "status": "pending",
+      "distance": "6.2 km",
+      "submittedAt": "2024-07-04T13:00:00"
+    },
+    {
+      "id": "D006",
+      "donorName": "Green Farms Produce",
+      "contactPhone": "+91 98112 67890",
+      "address": "22, Outer Ring Road, Bellandur, Bengaluru",
+      "foodType": "animal-feed",
+      "quantity": "30 kg (vegetables, grains & cooked rice)",
+      "preparedAt": "2024-07-04T10:00:00",
+      "description": "Surplus vegetables, stale bread, cooked rice, and grain mix — safe and nutritious feed for animals. Coordinated with local animal shelter.",
+      "status": "in_transit",
+      "distance": "3.1 km",
+      "claimedBy": "Paws & Care Animal Shelter",
+      "volunteer": "Divya Menon",
+      "submittedAt": "2024-07-04T10:30:00",
+      "pickedUpAt": "2024-07-04T11:45:00"
+    },
+    {
+      "id": "D007",
+      "donorName": "Saravana Bhavan, T.Nagar",
+      "contactPhone": "+91 44 2433 4545",
+      "address": "21, Usman Road, T. Nagar, Chennai – 600 017",
+      "foodType": "veg",
+      "quantity": "35 kg (approx. 120 servings)",
+      "preparedAt": "2024-07-04T09:00:00",
+      "description": "Surplus idli, sambar, and pongal from morning service. Freshly prepared and hygienically packed in food-grade containers.",
+      "status": "pending",
+      "distance": "3.2 km",
+      "submittedAt": "2024-07-04T09:45:00",
+      "route": [
+        {
+          "name": "Saravana Bhavan, T.Nagar",
+          "address": "21, Usman Road, T. Nagar, Chennai – 600 017",
+          "type": "pickup",
+          "status": "reached",
+          "arrivedAt": "2024-07-04T09:45:00"
+        },
+        {
+          "name": "FoodEx Hub – T.Nagar",
+          "address": "14, Pondy Bazaar, T. Nagar, Chennai – 600 017",
+          "type": "hub",
+          "status": "current"
+        },
+        {
+          "name": "Kodambakkam Transit Point",
+          "address": "Near Vadapalani Signal, Kodambakkam, Chennai – 600 026",
+          "type": "transit",
+          "status": "upcoming"
+        },
+        {
+          "name": "Ekta Old Age Home",
+          "address": "7, 4th Main Road, Anna Nagar, Chennai – 600 040",
+          "type": "delivery",
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "D008",
+      "donorName": "Kavin Events & Catering",
+      "contactPhone": "+91 98412 56789",
+      "address": "5, Khader Nawaz Khan Road, Nungambakkam, Chennai – 600 006",
+      "foodType": "both",
+      "quantity": "50 kg (approx. 170 servings)",
+      "preparedAt": "2024-07-04T11:00:00",
+      "description": "Corporate event catering surplus — biryani, kurma, and payasam. Well packed and labelled with preparation time.",
+      "status": "in_transit",
+      "distance": "5.7 km",
+      "claimedBy": "Little Stars Orphanage",
+      "volunteer": "Karthik Rajan",
+      "submittedAt": "2024-07-04T11:30:00",
+      "pickedUpAt": "2024-07-04T12:30:00",
+      "route": [
+        {
+          "name": "Kavin Events, Nungambakkam",
+          "address": "5, Khader Nawaz Khan Road, Nungambakkam, Chennai – 600 006",
+          "type": "pickup",
+          "status": "reached",
+          "arrivedAt": "2024-07-04T12:30:00"
+        },
+        {
+          "name": "FoodEx Hub – Teynampet",
+          "address": "3, Cenotaph Road, Teynampet, Chennai – 600 018",
+          "type": "hub",
+          "status": "reached",
+          "arrivedAt": "2024-07-04T13:00:00"
+        },
+        {
+          "name": "Mylapore Transit Point",
+          "address": "Near Kapaleeshwarar Temple, Mylapore, Chennai – 600 004",
+          "type": "transit",
+          "status": "current"
+        },
+        {
+          "name": "Adyar Checkpoint",
+          "address": "Lattice Bridge Road, Adyar, Chennai – 600 020",
+          "type": "transit",
+          "status": "upcoming"
+        },
+        {
+          "name": "Little Stars Orphanage",
+          "address": "12, Gandhi Nagar, Adyar, Chennai – 600 020",
+          "type": "delivery",
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "D009",
+      "donorName": "IIT Madras Mess",
+      "contactPhone": "+91 44 2257 8000",
+      "address": "IIT Madras Campus, Sardar Patel Road, Guindy, Chennai – 600 036",
+      "foodType": "veg",
+      "quantity": "20 kg (approx. 70 servings)",
+      "preparedAt": "2024-07-03T13:00:00",
+      "description": "Mess surplus — rice, dal fry, vegetable curry. Nutritious and freshly cooked campus food.",
+      "status": "delivered",
+      "distance": "4.1 km",
+      "claimedBy": "Street Paws Rescue",
+      "volunteer": "Sneha Balaji",
+      "submittedAt": "2024-07-03T13:30:00",
+      "pickedUpAt": "2024-07-03T14:00:00",
+      "deliveredAt": "2024-07-03T15:30:00",
+      "route": [
+        {
+          "name": "IIT Madras Mess",
+          "address": "IIT Madras Campus, Sardar Patel Road, Guindy, Chennai – 600 036",
+          "type": "pickup",
+          "status": "reached",
+          "arrivedAt": "2024-07-03T14:00:00"
+        },
+        {
+          "name": "FoodEx Hub – Guindy",
+          "address": "18, Mount Poonamallee Road, Guindy, Chennai – 600 032",
+          "type": "hub",
+          "status": "reached",
+          "arrivedAt": "2024-07-03T14:30:00"
+        },
+        {
+          "name": "Velachery Transit",
+          "address": "Velachery Main Road, Velachery, Chennai – 600 042",
+          "type": "transit",
+          "status": "reached",
+          "arrivedAt": "2024-07-03T15:00:00"
+        },
+        {
+          "name": "Street Paws Rescue",
+          "address": "9, 100 Feet Road, Velachery, Chennai – 600 042",
+          "type": "delivery",
+          "status": "reached",
+          "arrivedAt": "2024-07-03T15:30:00"
+        }
+      ]
+    },
+    {
+      "id": "D005",
+      "donorName": "Hotel Grand Pavilion",
+      "contactPhone": "+91 80 9876 5432",
+      "address": "No. 1, Brigade Road, Bengaluru",
+      "foodType": "veg",
+      "quantity": "60 kg (approx. 200 servings)",
+      "preparedAt": "2024-07-04T11:00:00",
+      "description": "Conference buffet leftovers — paneer dishes, rice, and desserts. Still warm.",
+      "status": "picked_up",
+      "distance": "4.5 km",
+      "claimedBy": "Hope Old Age Home",
+      "volunteer": "Suresh Kumar",
+      "submittedAt": "2024-07-04T11:30:00",
+      "pickedUpAt": "2024-07-04T12:45:00"
+    }
+  ],
+  "recipients": [
+    {
+      "id": "R001",
+      "name": "Meenakshi college",
+      "type": "old-age-home",
+      "address": "Arcot road, Kodambakkam, Chennai – 600 024",
+      "capacity": 60,
+      "contactPerson": "Mrs. Savitha Rao",
+      "phone": "+91 9962430880",
+      "claimedDonations": [
+        "D002"
+      ]
+    },
+    {
+      "id": "R005",
+      "name": "Ekta Old Age Home",
+      "type": "old-age-home",
+      "address": "7, 4th Main Road, Anna Nagar, Chennai – 600 040",
+      "capacity": 55,
+      "contactPerson": "Mrs. Jayalakshmi Narayanan",
+      "phone": "+91 44 2626 8890",
+      "claimedDonations": []
+    },
+    {
+      "id": "R006",
+      "name": "Little Stars Orphanage",
+      "type": "orphanage",
+      "address": "12, Gandhi Nagar, Adyar, Chennai – 600 020",
+      "capacity": 65,
+      "contactPerson": "Mr. Sridhar Venkatesh",
+      "phone": "+91 44 2491 3322",
+      "claimedDonations": [
+        "D008"
+      ]
+    },
+    {
+      "id": "R007",
+      "name": "Street Paws Rescue",
+      "type": "animal-shelter",
+      "address": "9, 100 Feet Road, Velachery, Chennai – 600 042",
+      "capacity": 80,
+      "contactPerson": "Ms. Preethi Anand",
+      "phone": "+91 98430 12345",
+      "claimedDonations": [
+        "D009"
+      ]
+    },
+    {
+      "id": "R002",
+      "name": "Seva Orphanage",
+      "type": "orphanage",
+      "address": "34, Children Colony, JP Nagar, Bengaluru",
+      "capacity": 80,
+      "contactPerson": "Mr. Thomas George",
+      "phone": "+91 80 3456 7890",
+      "claimedDonations": [
+        "D003"
+      ]
+    },
+    {
+      "id": "R004",
+      "name": "Paws & Care Animal Shelter",
+      "type": "animal-shelter",
+      "address": "22, Sarjapur Road, Carmelaram, Bengaluru",
+      "capacity": 120,
+      "contactPerson": "Ms. Anita Bose",
+      "phone": "+91 80 7654 3210",
+      "claimedDonations": [
+        "D006"
+      ]
+    },
+    {
+      "id": "R003",
+      "name": "Hope Old Age Home",
+      "type": "old-age-home",
+      "address": "7, Rainbow Road, Basavanagudi, Bengaluru",
+      "capacity": 45,
+      "contactPerson": "Dr. Padma Venkat",
+      "phone": "+91 80 4567 8901",
+      "claimedDonations": [
+        "D005"
+      ]
+    }
+  ]
+}
