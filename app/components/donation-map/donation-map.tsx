@@ -1,16 +1,14 @@
-import { useMemo } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, CircleMarker } from 'react-leaflet';
-import L from 'leaflet';
+import { useEffect, useMemo, useState } from 'react';
 import type { Donation, Recipient, OldAgeHome, Coordinates } from '~/data/donations';
 import styles from './donation-map.module.css';
 
-// Fix Leaflet marker icons
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-});
+interface DynamicMapComponents {
+  MapContainer: React.ComponentType<any>;
+  TileLayer: React.ComponentType<any>;
+  Marker: React.ComponentType<any>;
+  Popup: React.ComponentType<any>;
+  CircleMarker: React.ComponentType<any>;
+}
 
 interface DonationMapProps {
   donations: Donation[];
@@ -29,6 +27,39 @@ export function DonationMap({
   zoom = 12,
   height = '500px',
 }: DonationMapProps) {
+  const [components, setComponents] = useState<DynamicMapComponents | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    Promise.all([import('leaflet'), import('react-leaflet')])
+      .then(([L, reactLeaflet]) => {
+        if (!isMounted) return;
+
+        delete (L.Icon.Default.prototype as any)._getIconUrl;
+        L.Icon.Default.mergeOptions({
+          iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+          iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+        });
+
+        setComponents({
+          MapContainer: reactLeaflet.MapContainer,
+          TileLayer: reactLeaflet.TileLayer,
+          Marker: reactLeaflet.Marker,
+          Popup: reactLeaflet.Popup,
+          CircleMarker: reactLeaflet.CircleMarker,
+        });
+      })
+      .catch(error => {
+        console.error('Failed to load Leaflet map components:', error);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const bounds = useMemo(() => {
     const allCoords = [
       ...donations.map(d => d.coordinates),
@@ -36,14 +67,14 @@ export function DonationMap({
       ...oldAgeHomes.map(h => h.coordinates),
     ];
     if (allCoords.length === 0) return null;
-    
+
     const lats = allCoords.map(c => c.lat);
     const lngs = allCoords.map(c => c.lng);
     const minLat = Math.min(...lats);
     const maxLat = Math.max(...lats);
     const minLng = Math.min(...lngs);
     const maxLng = Math.max(...lngs);
-    
+
     return [[minLat, minLng], [maxLat, maxLng]] as [[number, number], [number, number]];
   }, [donations, recipients, oldAgeHomes]);
 
@@ -55,7 +86,7 @@ export function DonationMap({
     return '#6b7280';
   };
 
-  const getIcon = (type: string) => {
+  const getIcon = (L: any, type: string) => {
     const iconUrl = type === 'donation'
       ? 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png'
       : type === 'recipient'
@@ -74,6 +105,17 @@ export function DonationMap({
 
   const mapBounds = bounds ? (bounds as any) : undefined;
 
+  if (!components) {
+    return (
+      <div className={styles.mapPlaceholder} style={{ height }}>
+        <div>Loading map…</div>
+      </div>
+    );
+  }
+
+  const { MapContainer, TileLayer, Marker, Popup, CircleMarker } = components;
+  const L = require('leaflet');
+
   return (
     <div className={styles.mapContainer} style={{ height }}>
       <MapContainer
@@ -87,7 +129,6 @@ export function DonationMap({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {/* Donations */}
         {donations.map(donation => (
           <CircleMarker
             key={`donation-${donation.id}`}
@@ -113,12 +154,11 @@ export function DonationMap({
           </CircleMarker>
         ))}
 
-        {/* Recipients */}
         {recipients.map(recipient => (
           <Marker
             key={`recipient-${recipient.id}`}
             position={[recipient.coordinates.lat, recipient.coordinates.lng] as [number, number]}
-            icon={getIcon('recipient')}
+            icon={getIcon(L, 'recipient')}
           >
             <Popup>
               <div className={styles.popup}>
@@ -132,12 +172,11 @@ export function DonationMap({
           </Marker>
         ))}
 
-        {/* Old Age Homes */}
         {oldAgeHomes.map(home => (
           <Marker
             key={`home-${home.id}`}
             position={[home.coordinates.lat, home.coordinates.lng] as [number, number]}
-            icon={getIcon('home')}
+            icon={getIcon(L, 'home')}
           >
             <Popup>
               <div className={styles.popup}>

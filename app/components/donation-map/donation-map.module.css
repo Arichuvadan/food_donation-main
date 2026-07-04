@@ -25,3 +25,13 @@
 .popup strong {
   color: #1f2937;
 }
+
+.mapPlaceholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  background: #eef2ff;
+  color: #374151;
+  border-radius: 12px;
+  padding: 1rem;
+}
