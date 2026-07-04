@@ -28,10 +28,12 @@ export function DonationMap({
   height = '500px',
 }: DonationMapProps) {
   const [components, setComponents] = useState<DynamicMapComponents | null>(null);
+  const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
+    setIsBrowser(true);
     Promise.all([import('leaflet'), import('react-leaflet')])
       .then(([L, reactLeaflet]) => {
         if (!isMounted) return;
@@ -60,12 +62,21 @@ export function DonationMap({
     };
   }, []);
 
+  if (!components || !isBrowser) {
+    return (
+      <div className={styles.mapPlaceholder} style={{ height }}>
+        <div>Loading map…</div>
+      </div>
+    );
+  }
+
   const bounds = useMemo(() => {
     const allCoords = [
-      ...donations.map(d => d.coordinates),
-      ...recipients.map(r => r.coordinates),
-      ...oldAgeHomes.map(h => h.coordinates),
-    ];
+      ...donations.map(d => d?.coordinates),
+      ...recipients.map(r => r?.coordinates),
+      ...oldAgeHomes.map(h => h?.coordinates),
+    ].filter((coord): coord is Coordinates => Boolean(coord?.lat) && Boolean(coord?.lng));
+
     if (allCoords.length === 0) return null;
 
     const lats = allCoords.map(c => c.lat);
@@ -105,7 +116,7 @@ export function DonationMap({
 
   const mapBounds = bounds ? (bounds as any) : undefined;
 
-  if (!components) {
+  if (!components || !isBrowser) {
     return (
       <div className={styles.mapPlaceholder} style={{ height }}>
         <div>Loading map…</div>
