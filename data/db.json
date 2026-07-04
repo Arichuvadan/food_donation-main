@@ -9,9 +9,11 @@
       "quantity": "25 kg (approx. 80 servings)",
       "preparedAt": "2024-07-04T08:00:00",
       "description": "Freshly cooked biryani and dal from a wedding ceremony. Packed hygienically in food-grade containers.",
-      "status": "pending",
+      "status": "picked_up",
       "distance": "2.4 km",
-      "submittedAt": "2024-07-04T09:30:00"
+      "submittedAt": "2024-07-04T09:30:00",
+      "claimedBy": "Meenakshi college",
+      "pickedUpAt": "2026-07-04T17:02:03.907Z"
     },
     {
       "id": "D002",
@@ -55,9 +57,11 @@
       "quantity": "40 kg (approx. 140 servings)",
       "preparedAt": "2024-07-04T12:00:00",
       "description": "Large corporate lunch surplus. Mixed veg and non-veg dishes, well packaged.",
-      "status": "pending",
+      "status": "picked_up",
       "distance": "6.2 km",
-      "submittedAt": "2024-07-04T13:00:00"
+      "submittedAt": "2024-07-04T13:00:00",
+      "claimedBy": "Meenakshi college",
+      "pickedUpAt": "2026-07-04T17:02:01.425Z"
     },
     {
       "id": "D006",
@@ -84,7 +88,7 @@
       "quantity": "35 kg (approx. 120 servings)",
       "preparedAt": "2024-07-04T09:00:00",
       "description": "Surplus idli, sambar, and pongal from morning service. Freshly prepared and hygienically packed in food-grade containers.",
-      "status": "pending",
+      "status": "picked_up",
       "distance": "3.2 km",
       "submittedAt": "2024-07-04T09:45:00",
       "route": [
@@ -113,7 +117,9 @@
           "type": "delivery",
           "status": "upcoming"
         }
-      ]
+      ],
+      "claimedBy": "Meenakshi college",
+      "pickedUpAt": "2026-07-04T17:02:02.969Z"
     },
     {
       "id": "D008",
@@ -239,7 +245,10 @@
       "contactPerson": "Mrs. Savitha Rao",
       "phone": "+91 9962430880",
       "claimedDonations": [
-        "D002"
+        "D002",
+        "D004",
+        "D007",
+        "D001"
       ]
     },
     {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Donation, Recipient, OldAgeHome, Coordinates } from '~/data/donations';
 import styles from './donation-map.module.css';
 
@@ -91,7 +91,7 @@ export function DonationMap({
       typeof home.coordinates.lng === 'number'
   );
 
-  const bounds = useMemo(() => {
+  const mapBounds = (() => {
     const allCoords = [
       ...donationsWithCoords.map(d => d.coordinates),
       ...recipientsWithCoords.map(r => r.coordinates),
@@ -108,7 +108,7 @@ export function DonationMap({
     const maxLng = Math.max(...lngs);
 
     return [[minLat, minLng], [maxLat, maxLng]] as [[number, number], [number, number]];
-  }, [donationsWithCoords, recipientsWithCoords, oldAgeHomesWithCoords]);
+  })();
 
   const getStatusColor = (status: string): string => {
     if (status === 'pending') return '#f59e0b';
@@ -134,8 +134,6 @@ export function DonationMap({
       shadowSize: [41, 41],
     });
   };
-
-  const mapBounds = bounds ? (bounds as any) : undefined;
 
   const { MapContainer, TileLayer, Marker, Popup, CircleMarker } = components;
   const L = require('leaflet');
