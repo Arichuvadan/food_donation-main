@@ -8,6 +8,7 @@ export default [
     route("donate", "routes/donate.tsx"),
     route("recipients", "routes/recipients.tsx"),
     route("track", "routes/track.tsx"),
+    route("domain", "routes/domain.tsx"),
   ]),
   ...devRoutes,
 ] satisfies RouteConfig;

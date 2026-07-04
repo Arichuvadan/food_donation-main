@@ -35,6 +35,11 @@ export function Navbar() {
               Track Delivery
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/domain" className={({ isActive }) => isActive ? styles.active : ''} onClick={() => setMenuOpen(false)}>
+              Domain
+            </NavLink>
+          </li>
         </ul>
 
         <div className={styles.actions}>
